@@ -34,6 +34,7 @@ let upperPipe = null;
 let lowerPipe = null;
 const pipeVerticalDistanceRange = [150, 250];
 let pipeVeritcaldistance = Phaser.Math.Between(pipeVerticalDistanceRange[0], pipeVerticalDistanceRange[1]);
+let pipeVerticalPosition = Phaser.Math.Between(0 + 20, config.height - 20 - pipeVeritcaldistance);
 
 const initialBirdPosition = { x: config.width * 0.1, y: config.height / 2 };
 
@@ -42,14 +43,14 @@ function create() {
   // bird = this.physics.add.sprite(config.width * 0.1, config.height / 2, "bird").setOrigin(0);
   bird = this.physics.add.sprite(initialBirdPosition.x, initialBirdPosition.y, "bird").setOrigin(0);
   bird.body.gravity.y = 400;
-  upperPipe = this.physics.add.sprite(400, 100, "pipe").setOrigin(0, 1);
+  upperPipe = this.physics.add.sprite(400, pipeVerticalPosition, "pipe").setOrigin(0, 1);
   lowerPipe = this.physics.add.sprite(400, upperPipe.y + pipeVeritcaldistance, "pipe").setOrigin(0, 0);
   // this.input.on("pointerdown", function () {
   // console.log("pressing mouse");
   // });
 
   this.input.on("pointerdown", flap);
-  debugger;
+  // debugger;
   // this.input.keyboard.on("keydown-SPACE", function () {
   // console.log(`pressing the spacebar  button`);
   // });
