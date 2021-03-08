@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 import sky from "./images/sky.png";
 import pajaro from "./images/bird.png";
+import tubo from "./images/pipe.png";
 
 const config = {
   type: Phaser.AUTO,
@@ -9,7 +10,7 @@ const config = {
   physics: {
     default: "arcade",
     arcade: {
-      gravity: { y: 400 },
+      // gravity: { y: 400 },
       debug: TextTrackCue,
     },
   },
@@ -23,18 +24,22 @@ const config = {
 function preload() {
   this.load.image("sky", sky);
   this.load.image("bird", pajaro);
+  this.load.image("pipe", tubo);
 }
 
 const VELOCITY = 200;
 const flapVelocity = 250;
 let bird = null;
+let upperPipe = null;
+let lowerPipe = null;
 const initialBirdPosition = { x: config.width * 0.1, y: config.height / 2 };
 
 function create() {
   this.add.image(0, 0, "sky").setOrigin(0);
   // bird = this.physics.add.sprite(config.width * 0.1, config.height / 2, "bird").setOrigin(0);
   bird = this.physics.add.sprite(initialBirdPosition.x, initialBirdPosition.y, "bird").setOrigin(0);
-
+  bird.body.gravity.y = 400;
+  pipe = this.physics.add.sprite(300, 100, "pipe").setOrigin(0);
   // this.input.on("pointerdown", function () {
   // console.log("pressing mouse");
   // });
