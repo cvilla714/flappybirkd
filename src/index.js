@@ -9,7 +9,7 @@ const config = {
   physics: {
     default: "arcade",
     arcade: {
-      // gravity: { y: 200 },
+      gravity: { y: 400 },
       debug: TextTrackCue,
     },
   },
@@ -26,20 +26,29 @@ function preload() {
 }
 
 const VELOCITY = 200;
+let flapVelocity = 250;
 let bird = null;
 
 function create() {
   this.add.image(0, 0, "sky").setOrigin(0);
   bird = this.physics.add.sprite(config.width * 0.1, config.height / 2, "bird").setOrigin(0);
 
-  this.input.on("pointerdown", function () {
-    console.log("pressing mouse");
-  });
+  // this.input.on("pointerdown", function () {
+  // console.log("pressing mouse");
+  // });
 
-  this.input.keyboard.on("keydown-SPACE", function () {
-    console.log(`pressing the spacebar  button`);
-  });
+  this.input.on("pointerdown", flap);
+
+  // this.input.keyboard.on("keydown-SPACE", function () {
+  // console.log(`pressing the spacebar  button`);
+  // });
+
+  this.input.keyboard.on("keydown-SPACE", flap);
 }
 
 function update(time, delta) {}
+
+function flap() {
+  bird.body.velocity.y = -flapVelocity;
+}
 new Phaser.Game(config);
