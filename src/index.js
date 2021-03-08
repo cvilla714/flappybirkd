@@ -32,6 +32,9 @@ const flapVelocity = 250;
 let bird = null;
 let upperPipe = null;
 let lowerPipe = null;
+const pipeVerticalDistanceRange = [150, 250];
+let pipeVeritcaldistance = Phaser.Math.Between(pipeVerticalDistanceRange[0], pipeVerticalDistanceRange[1]);
+
 const initialBirdPosition = { x: config.width * 0.1, y: config.height / 2 };
 
 function create() {
@@ -39,7 +42,8 @@ function create() {
   // bird = this.physics.add.sprite(config.width * 0.1, config.height / 2, "bird").setOrigin(0);
   bird = this.physics.add.sprite(initialBirdPosition.x, initialBirdPosition.y, "bird").setOrigin(0);
   bird.body.gravity.y = 400;
-  pipe = this.physics.add.sprite(300, 100, "pipe").setOrigin(0);
+  upperPipe = this.physics.add.sprite(400, 100, "pipe").setOrigin(0, 1);
+  lowerPipe = this.physics.add.sprite(400, upperPipe.y + pipeVeritcaldistance, "pipe").setOrigin(0, 0);
   // this.input.on("pointerdown", function () {
   // console.log("pressing mouse");
   // });
