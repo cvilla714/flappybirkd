@@ -30,25 +30,16 @@ let bird = null;
 
 function create() {
   this.add.image(0, 0, "sky").setOrigin(0);
-  // this.add.sprite(config.width / 2, config.height / 2, "bird").setOrigin(0);
-  // this will move the bird  1/10th of the width
-  // this.add.sprite(config.width * 0.1, config.height / 2, "bird").setOrigin(0);
   bird = this.physics.add.sprite(config.width * 0.1, config.height / 2, "bird").setOrigin(0);
-  // bird.body.gravity.y = 200;
-  // console.log(bird.body);
-  // debugger;
-  bird.body.velocity.x = VELOCITY;
+
+  this.input.on("pointerdown", function () {
+    console.log("pressing mouse");
+  });
+
+  this.input.keyboard.on("keydown-SPACE", function () {
+    console.log(`pressing the spacebar  button`);
+  });
 }
 
-// if bird positoin x is same or larger then the width of the canvs go back to the inisital positon
-// if bird positio nx is samller or equal to 0 the move forward or to the right
-
-function update(time, delta) {
-  // console.log(bird.body.velocity.y);
-  if (bird.body.position.x >= config.width) {
-    bird.body.velocity.x = -VELOCITY;
-  } else if (bird.body.position.x <= 0) {
-    bird.body.velocity.x = VELOCITY;
-  }
-}
+function update(time, delta) {}
 new Phaser.Game(config);
