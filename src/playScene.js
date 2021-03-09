@@ -23,12 +23,12 @@ class PlayScene extends Phaser.Scene {
     this.scoreText = "";
   }
 
-  preload() {
-    this.load.image("sky", sky);
-    this.load.image("bird", pajaro);
-    this.load.image("pipe", tubo);
-    this.load.image("pausa", pausa);
-  }
+  // preload() {
+  // this.load.image("sky", sky);
+  // this.load.image("bird", pajaro);
+  // this.load.image("pipe", tubo);
+  // this.load.image("pausa", pausa);
+  // }
   create() {
     this.createBG();
     this.createBird();

@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 import PlayScene from "./playScene";
 import MenuScene from "./menuScene";
+import PreloadScene from "./preloadScene";
 
 const WIDTH = 800;
 const HEIGHT = 600;
@@ -22,6 +23,6 @@ const config = {
       debug: TextTrackCue,
     },
   },
-  scene: [new MenuScene(SHARED_CONFIG), new PlayScene(SHARED_CONFIG)],
+  scene: [PreloadScene, new MenuScene(SHARED_CONFIG), new PlayScene(SHARED_CONFIG)],
 };
 new Phaser.Game(config);

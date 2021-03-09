@@ -7,12 +7,13 @@ class MenuScene extends Phaser.Scene {
     this.config = config;
   }
 
-  preload() {
-    this.load.image("sky", sky);
-  }
+  //   preload() {
+  // this.load.image("sky", sky);
+  //   }
 
   create() {
     this.add.image(0, 0, "sky").setOrigin(0);
+    this.scene.start("PlayScene");
   }
 }
 
