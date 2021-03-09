@@ -4,8 +4,9 @@ import sky from "./images/sky.png";
 
 class MenuScene extends BaseScene {
   constructor(config) {
-    super("MenuScene");
-    this.config = config;
+    // super("MenuScene");
+    // this.config = config;
+    super("MenuScene", config);
   }
 
   create() {
