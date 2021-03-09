@@ -7,12 +7,19 @@ class MenuScene extends BaseScene {
     // super("MenuScene");
     // this.config = config;
     super("MenuScene", config);
+
+    this.menu = [
+      { scene: "PlayScene", text: "Play" },
+      { scene: "ScoreScene", text: "Score" },
+      { scene: null, text: "Exit" },
+    ];
   }
 
   create() {
     this.add.image(0, 0, "sky").setOrigin(0);
     super.create();
-    this.scene.start("PlayScene");
+    // this.scene.start("PlayScene");
+    this.createMenu(this.menu);
   }
 }
 
