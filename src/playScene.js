@@ -2,6 +2,7 @@ import Phaser from "phaser";
 import sky from "./images/sky.png";
 import pajaro from "./images/bird.png";
 import tubo from "./images/pipe.png";
+import pausa from "./images/pause.png";
 
 const PIPES_TO_RENDER = 4;
 
@@ -26,6 +27,7 @@ class PlayScene extends Phaser.Scene {
     this.load.image("sky", sky);
     this.load.image("bird", pajaro);
     this.load.image("pipe", tubo);
+    this.load.image("pausa", pausa);
   }
   create() {
     this.createBG();
@@ -33,6 +35,7 @@ class PlayScene extends Phaser.Scene {
     this.createPipes();
     this.createColliders();
     this.createScore();
+    this.createPause();
     this.handleInputs();
   }
 
@@ -72,6 +75,13 @@ class PlayScene extends Phaser.Scene {
     const bestScore = localStorage.getItem("bestScore");
     this.scoreText = this.add.text(16, 16, `Score: ${0}`, { fontSize: "32px", fill: "#000" });
     this.add.text(16, 52, `Best score: ${bestScore || 0}`, { fontSize: "18px", fill: "#000" });
+  }
+
+  createPause() {
+    this.add
+      .image(this.config.width - 10, this.config.height - 10, "pausa")
+      .setScale(3)
+      .setOrigin(1);
   }
 
   handleInputs() {
