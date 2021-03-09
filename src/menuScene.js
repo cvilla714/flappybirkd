@@ -1,18 +1,16 @@
-import Phaser from "phaser";
+// import Phaser from "phaser";
+import BaseScene from "./baseScene";
 import sky from "./images/sky.png";
 
-class MenuScene extends Phaser.Scene {
+class MenuScene extends BaseScene {
   constructor(config) {
     super("MenuScene");
     this.config = config;
   }
 
-  //   preload() {
-  // this.load.image("sky", sky);
-  //   }
-
   create() {
     this.add.image(0, 0, "sky").setOrigin(0);
+    super.create();
     this.scene.start("PlayScene");
   }
 }

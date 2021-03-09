@@ -1,15 +1,10 @@
 import Phaser from "phaser";
-import sky from "./images/sky.png";
-import pajaro from "./images/bird.png";
-import tubo from "./images/pipe.png";
-import pausa from "./images/pause.png";
-
+import BaseScene from "./baseScene";
 const PIPES_TO_RENDER = 4;
 
-class PlayScene extends Phaser.Scene {
+class PlayScene extends BaseScene {
   constructor(config) {
-    super("PlayScene");
-    this.config = config;
+    super("PlayScene", config);
 
     this.bird = null;
     this.pipes = null;
@@ -23,14 +18,9 @@ class PlayScene extends Phaser.Scene {
     this.scoreText = "";
   }
 
-  // preload() {
-  // this.load.image("sky", sky);
-  // this.load.image("bird", pajaro);
-  // this.load.image("pipe", tubo);
-  // this.load.image("pausa", pausa);
-  // }
   create() {
-    this.createBG();
+    // this.createBG();
+    super.create();
     this.createBird();
     this.createPipes();
     this.createColliders();
